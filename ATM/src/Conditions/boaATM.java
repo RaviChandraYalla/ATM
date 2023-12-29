@@ -22,83 +22,80 @@ import java.util.Scanner;
 //   Remaining Balance : XXXXX
 //4. Thank you...!!!, visit again.
 public class boaATM {
-	
-	public static double balance = 500;
-	public static void main(String args[])
-	{
-		Scanner sc = new Scanner(System.in);
-		
-			int choice;
-			System.out.println("choose your option : ");
-			System.out.println("1. Balance Check");
-			System.out.println("2. Deposit");
-			System.out.println("3. Withdraw");
-			System.out.println("4. Exit");
-			
-			choice = sc.nextInt();
 
-			switch(choice) {
-			case 1:
-				displayBalance();
-				break;
-			case 2:
-				deposit();
-				break;
-			case 3 :
-				withDraw();
-				break;
-			case 4:
-				System.out.println("Thank you...!!!, visit again.");
+	public static double balance = 500;
+
+	public static void main(String args[]) {
+		Scanner sc = new Scanner(System.in);
+
+		int choice;
+		System.out.println("choose your option : ");
+		System.out.println("1. Balance Check");
+		System.out.println("2. Deposit");
+		System.out.println("3. Withdraw");
+		System.out.println("4. Exit");
+
+		choice = sc.nextInt();
+
+		switch (choice) {
+		case 1:
+			displayBalance();
 			break;
-			default:
-				System.out.println("Invalid option");
-			}
-			
-			sc.close();	
+		case 2:
+			deposit();
+			break;
+		case 3:
+			withDraw();
+			break;
+		case 4:
+			System.out.println("Thank you...!!!, visit again.");
+			break;
+		default:
+			System.out.println("Invalid option");
 		}
+
+		sc.close();
+	}
+
 	private static void withDraw() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter Withdrawl amout:");
 		double Withdrawl_Amout = sc.nextDouble();
-		if(Withdrawl_Amout< 0) {
+		if (Withdrawl_Amout < 0) {
 			System.out.println("Error: Please enter a proper amount.");
-			
-		}else if(Withdrawl_Amout>balance) {
+
+		} else if (Withdrawl_Amout > balance) {
 			System.out.println("Insufficient balance");
-		}else{
-			balance  -= Withdrawl_Amout;
+		} else {
+			balance -= Withdrawl_Amout;
 			System.err.println("collect your amount");
-			displayBalance();			
+			displayBalance();
 		}
 		sc.close();
-		
+
 	}
+
 	private static void deposit() {
-		
+
 		Scanner sc = new Scanner(System.in);
-		
+
 		System.out.println("enter the amount to deposit $:");
 		double deposit_Amount = sc.nextDouble();
-		
-		if(deposit_Amount < 0) {
+
+		if (deposit_Amount < 0) {
 			System.out.println("Error: please enter valid amount");
-		
-			
-		}else {
+
+		} else {
 			balance += deposit_Amount;
 			System.out.println("deposited");
 			displayBalance();
 		}
 		sc.close();
-	
+
 	}
 
-	
 	private static void displayBalance() {
-		
-		System.out.println("Your balabce :" + balance +"$");
-	}	
-	}
-		
-	
 
+		System.out.println("Your balabce :" + balance + "$");
+	}
+}
